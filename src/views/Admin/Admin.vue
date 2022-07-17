@@ -22,7 +22,7 @@
 				<tbody>
 					<tr v-for="(user, index) in registeredUsers" :key="user.UID">
 						<th scope="row">{{ index + 1}}</th>
-						<td><span style="color: gray">@</span>{{ user.Username }}</td>
+						<td><span style="color: gray" class="me-1">@</span>{{ user.Username }}</td>
 						<td>{{ user.FirstName }}</td>
 						<td>{{ user.LastName }}</td>
 						<td>
