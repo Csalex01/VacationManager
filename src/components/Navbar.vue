@@ -38,6 +38,10 @@
 					</li>
 
 					<li v-if="loggedIn" class="nav-item">
+						<router-link :to="{name: 'Profile'}" class="nav-link" :class="{active: $route.name === 'Profile'}">Profile</router-link>
+					</li>
+
+					<li v-if="loggedIn" class="nav-item">
 						<a class="btn btn-outline-success" @click="logout">Log Out</a>
 					</li>
 				</ul>
@@ -99,5 +103,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.nav-item {
+	margin-right: 10px;
+}
 </style>

@@ -1,6 +1,51 @@
 <template>
 	<div v-if="hasAccess">
-		<h1>Admin View</h1>
+		<h1>Admin Panel</h1>
+
+		<p>The following table shows all the registered users.</p>
+
+		<div class="table-responsive">
+			<table class="table table-striped mt-3">
+				<thead style="background: #212529; color: white;">
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Username</th>
+						<th scope="col">First Name</th>
+						<th scope="col">Last Name</th>
+						<th scope="col">User Group</th>
+						<th scope="col">Approved</th>
+						<th scope="col">Requests (Pending/Total)</th>
+						<th scope="col">Actions</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr v-for="(user, index) in registeredUsers" :key="user.UID">
+						<th scope="row">{{ index + 1}}</th>
+						<td><span style="color: gray">@</span>{{ user.Username }}</td>
+						<td>{{ user.FirstName }}</td>
+						<td>{{ user.LastName }}</td>
+						<td>
+							<i v-if="user.Role == 'Admin'" style="color: red">{{ user.Role }}</i>
+							<i v-else-if="user.Role == 'Employee'" style="color: green">{{ user.Role }}</i>
+							<i v-else-if="user.Role == 'Viewer'" style="color: blue">{{ user.Role }}</i>
+						</td>
+						<td>
+							<i v-if="user.Approved" class="fa-solid fa-circle-check" style="color: green"></i>
+							<i v-else class="fa-solid fa-circle-xmark" style="color: red"></i>
+						</td>
+						<td>
+							<button class="btn btn-primary me-2"><i class="fa-solid fa-pen"></i></button>
+							({{ user.pendingRequests }}/{{ user.requestCount }})
+						</td>
+						<td>
+							<button class="btn btn-primary me-1"><i class="fa-solid fa-pen-to-square"></i></button>
+							<button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </template>
 
@@ -12,7 +57,8 @@ export default {
 	data() {
 		return {
 			user: null,
-			hasAccess: false
+			hasAccess: false,
+			registeredUsers: []
 		}
 	},
 	beforeCreate() {
@@ -22,14 +68,12 @@ export default {
 				doc.get()
 					.then(docRef => {
 						if (docRef.exists) {
+							this.hasAccess = true
 							this.user = docRef.data()
 
-							console.log(this.user)
+							if (this.user.Role != 'Admin')
+								this.$router.push({ name: "Index" })
 
-							// if (this.user.Role != "Admin")
-							// 	this.$router.push({ name: "Index" })
-
-							this.hasAccess = true
 						} else
 							console.log("No such document!")
 					})
@@ -38,6 +82,27 @@ export default {
 					})
 			}
 		})
+
+		firestore.collection("users").get()
+			.then(querySnapshot => {
+				querySnapshot.forEach(docRef => {
+					const data = docRef.data()
+
+					if (data.Requests != null)
+						data.requestCount = data.Requests.length
+					else
+						data.requestCount = 0
+
+					data.pendingRequests = 0
+
+					this.registeredUsers.push(data)
+				})
+
+				console.log(this.registeredUsers)
+			})
+			.catch(error => {
+				console.error(`Error: ${error.code}\n${error.message}`)
+			})
 	}
 }
 </script>

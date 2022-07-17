@@ -84,7 +84,7 @@ export default {
 							console.error(`Error: ${error.code}\n${error.message}`)
 						})
 
-					this.$router.push({ name: "Login" })
+					this.$router.push({ name: "Index" })
 				})
 				.catch(error => {
 					console.error(`Error: ${error.code}\n${error.message}`)

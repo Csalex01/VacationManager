@@ -6,6 +6,7 @@ import LeaveRequests from '../views/LeaveRequests.vue'
 import Signup from '../views/Auth/Signup.vue'
 import Login from '../views/Auth/Login.vue'
 import Admin from '../views/Admin/Admin.vue'
+import Profile from '../views/Profile.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,9 +42,14 @@ const router = createRouter({
       component: Login
     },
     {
-      path: '/adminpanel',
+      path: '/admin',
       name: 'Admin',
       component: Admin
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
     }
     // {
     //   path: '/about',
