@@ -10,6 +10,11 @@ import Admin from '../views/Admin/Admin.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // {
+    //   path: '/:pathMatch(.*)',
+    //   name: "NotFound",
+    //   component: Index
+    // },
     {
       path: '/',
       name: 'Index',
@@ -36,7 +41,7 @@ const router = createRouter({
       component: Login
     },
     {
-      path: '/admin',
+      path: '/adminpanel',
       name: 'Admin',
       component: Admin
     }

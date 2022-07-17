@@ -1,7 +1,7 @@
-import firebase from 'firebase/app'
+import firebase from 'firebase/compat/app'
 
-import 'firebase/firestore'
-import 'firebase/auth'
+import 'firebase/compat/firestore'
+import 'firebase/compat/auth'
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -18,12 +18,12 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 // Initialize Firestore Service
-const projectFirestore = firebase.firestore()
+const firestore = firebase.firestore()
 
 // Initialize Authentication Service
 const auth = firebase.auth()
 
 export {
-	projectFirestore,
+	firestore,
 	auth
 }
