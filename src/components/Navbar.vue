@@ -22,7 +22,7 @@
 						<router-link :to="{ name: 'LeaveRequests' }" class="nav-link" :class="{active: $route.name === 'LeaveRequests'}">Leave requests</router-link>
 					</li>
 
-					<li v-if="loggedIn && isAdmin" class="nav-item">
+					<li v-if="isAdmin && loggedIn" class="nav-item">
 						<router-link :to="{ name: 'Admin' }" class="btn btn-outline-danger" :class="{active: $route.name === 'Admin'}">Admin panel</router-link>
 					</li>
 				</ul>
