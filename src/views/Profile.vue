@@ -1,6 +1,6 @@
 <template>
 	<div class="container box">
-		<h1>Profile for <br> {{ firstName }} {{ lastName }} ({{ username }})</h1>
+		<h1>Profile for {{ title }}</h1>
 
 		<br>
 
@@ -61,7 +61,8 @@ export default {
 			firstName: null,
 			lastName: null,
 			password1: null,
-			password2: null
+			password2: null,
+			title: null
 		}
 	},
 	beforeCreate() {
@@ -73,7 +74,7 @@ export default {
 				doc.get()
 					.then(docRef => {
 						if (docRef.exists) {
-							console.log(docRef.data())
+							// console.log(docRef.data())
 							this.user = docRef.data()
 
 							this.email = user.email
@@ -81,6 +82,7 @@ export default {
 							this.firstName = this.user.FirstName
 							this.lastName = this.user.LastName
 
+							this.title = `${this.firstName} ${this.lastName} (${this.username})`
 						}
 					})
 					.catch(error => {
@@ -91,8 +93,45 @@ export default {
 		})
 	},
 	methods: {
-		sasveChanges() {
+		saveChanges() {
+			console.log(this.email)
+			console.log(this.username)
+			console.log(this.firstName)
+			console.log(this.lastName)
+			console.log(this.password1)
+			console.log(this.password2)
 
+			const currentUser = auth.currentUser
+			currentUser.updateEmail(this.email)
+				.then(() => {
+					console.log("Successfully updated email address!")
+				})
+				.catch(error => {
+					console.error(`Error: ${error.code}\n${error.message}`)
+				})
+
+			if (this.password1)
+				currentUser.updatePassword(this.password1)
+					.then(() => {
+						console.log("Successfully updated password!")
+					})
+					.catch(error => {
+						console.error(`Error: ${error.code}\n${error.message}`)
+					})
+
+			const doc = firestore.collection("users").doc(this.user.UID)
+			doc.update({
+				Username: this.username,
+				FirstName: this.firstName,
+				LastName: this.lastName,
+			})
+				.then(() => {
+					console.log("Document updated successfully!")
+					this.$router.push({ name: "Index" })
+				})
+				.catch(error => {
+					console.error(`Error: ${error.code}\n${error.message}`)
+				})
 		}
 	}
 }
@@ -100,6 +139,6 @@ export default {
 
 <style scoped>
 .box {
-	max-width: 500px;
+	max-width: 1000px;
 }
 </style>

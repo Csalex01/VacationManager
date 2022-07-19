@@ -7,6 +7,7 @@ import Signup from '../views/Auth/Signup.vue'
 import Login from '../views/Auth/Login.vue'
 import Admin from '../views/Admin/Admin.vue'
 import Profile from '../views/Profile.vue'
+import ProfileManager from '../views/Admin/ProfileManager.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +51,11 @@ const router = createRouter({
       path: '/profile',
       name: 'Profile',
       component: Profile
+    },
+    {
+      path: '/profile/:UID',
+      name: 'ProfileManager',
+      component: ProfileManager
     }
     // {
     //   path: '/about',

@@ -35,12 +35,13 @@
 							<i v-else class="fa-solid fa-circle-xmark" style="color: red"></i>
 						</td>
 						<td>
-							<button class="btn btn-primary me-2"><i class="fa-solid fa-pen"></i></button>
+							<button class="btn btn-success me-2"><i class="fa-solid fa-pen-to-square"></i> Edit Requests</button>
 							({{ user.pendingRequests }}/{{ user.requestCount }})
 						</td>
 						<td>
-							<button class="btn btn-primary me-1"><i class="fa-solid fa-pen-to-square"></i></button>
-							<button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+							<router-link :to="{ name: 'ProfileManager', params: { UID: user.UID } }">
+								<button class="btn btn-warning me-1"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</button>
+							</router-link>
 						</td>
 					</tr>
 				</tbody>
@@ -58,7 +59,9 @@ export default {
 		return {
 			user: null,
 			hasAccess: false,
-			registeredUsers: []
+			registeredUsers: [],
+			UID: null,
+			enableModal: false
 		}
 	},
 	beforeCreate() {

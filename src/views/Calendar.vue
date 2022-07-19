@@ -25,7 +25,7 @@ export default {
 				doc.get()
 					.then(docRef => {
 						if (docRef.exists) {
-							console.log(docRef.data())
+							// console.log(docRef.data())
 							this.user = docRef.data()
 
 							if (!this.user.Approved) {

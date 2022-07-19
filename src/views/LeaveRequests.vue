@@ -28,7 +28,7 @@ export default {
 							console.log(docRef.data())
 							this.user = docRef.data()
 
-							if (!this.user.Approved) {
+							if (!this.user.Approved || this.user.Role == "Viewer") {
 								this.approved = false
 								this.$router.push({ name: "Index" })
 							} else {

@@ -18,12 +18,12 @@
 						<router-link :to="{ name: 'Calendar' }" class="nav-link" :class="{active: $route.name === 'Calendar'}">Calendar</router-link>
 					</li>
 
-					<li v-if="loggedIn" class="nav-item">
-						<router-link :to="{ name: 'LeaveRequests' }" class="nav-link" :class="{active: $route.name === 'LeaveRequests'}">Leave requests</router-link>
+					<li v-if="loggedIn && (role == 'Employee' || role == 'Admin')" class="nav-item">
+						<router-link :to="{ name: 'LeaveRequests' }" class="nav-link" :class="{active: $route.name === 'LeaveRequests'}">Leave Requests</router-link>
 					</li>
 
-					<li v-if="isAdmin && loggedIn" class="nav-item">
-						<router-link :to="{ name: 'Admin' }" class="btn btn-outline-danger" :class="{active: $route.name === 'Admin'}">Admin panel</router-link>
+					<li v-if="isAdmin" class="nav-item">
+						<router-link :to="{ name: 'Admin' }" class="btn btn-outline-danger" :class="{active: $route.name === 'Admin'}">Admin Panel</router-link>
 					</li>
 				</ul>
 
@@ -42,7 +42,7 @@
 					</li>
 
 					<li v-if="loggedIn" class="nav-item">
-						<a class="btn btn-outline-success" @click="logout">Log Out</a>
+						<a class="btn btn-outline-warning" @click="logout">Log Out</a>
 					</li>
 				</ul>
 
@@ -61,7 +61,9 @@ export default {
 		return {
 			loggedIn: false,
 			user: null,
-			isAdmin: false
+			isAdmin: false,
+			role: null,
+			name: null
 		}
 	},
 	beforeCreate() {
@@ -73,8 +75,10 @@ export default {
 				doc.get()
 					.then(docRef => {
 						if (docRef.exists) {
-							console.log(docRef.data())
+							// console.log(docRef.data())
 							this.user = docRef.data()
+							this.role = this.user.Role
+							this.name = `${this.user.FirstName} ${this.user.LastName}`
 
 							if (this.user.Role == "Admin")
 								this.isAdmin = true
@@ -85,6 +89,9 @@ export default {
 					.catch(error => {
 						console.error(`Error: ${error.code}\n${error.message}`)
 					})
+			} else {
+				this.loggedIn = false
+				this.isAdmin = false
 			}
 		})
 	},
