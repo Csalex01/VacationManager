@@ -7,7 +7,7 @@
 			Email Address
 		</label>
 		<input type="email" name="email" class="form-control" id="email" placeholder="Enter Email Address" v-model="email" required>
-		<div v-if="alertMessage && alertType" style="color: red">ERROR MESSAGE</div>
+		<!-- <div v-if="alertMessage && alertType" style="color: red">ERROR MESSAGE</div> -->
 
 		<br>
 
@@ -16,7 +16,7 @@
 			Password
 		</label>
 		<input type="password" name="password" class="form-control mb-1" id="password" placeholder="Enter Password" v-model="password" required>
-		<div v-if="alertMessage && alertType" style="color: red">ERROR MESSAGE</div>
+		<!-- <div v-if="alertMessage && alertType" style="color: red">ERROR MESSAGE</div> -->
 
 		<div class="mt-2 mb-3">
 			<a style="color: blue; text-decoration: none">Reset Password</a>
@@ -51,7 +51,7 @@ export default {
 		login() {
 			if (this.email.length == 0 || this.password.length == 0) {
 				this.alertMessage = "All fields must be filled!"
-				this.alertType = "Error"
+				this.alertType = "Warning"
 				return
 			}
 
@@ -63,7 +63,8 @@ export default {
 				.catch(error => {
 					// console.error(`Error: ${error.code}\n${error.message}`)
 					this.errorCode = error.code
-					console.log(this.errorCode)
+					// console.log(this.errorCode)
+
 					switch (error.code) {
 						case "auth/user-not-found":
 							this.alertMessage = "User not found or invalid credintials given!"
@@ -75,6 +76,7 @@ export default {
 							break
 						default:
 							this.alertMessage = `Unknown error occured! (${error.code})`
+							this.alertType = "Error"
 					}
 
 					console.log(this.alertMessage)
