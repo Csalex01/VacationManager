@@ -1,6 +1,9 @@
 <template>
 	<div v-if="hasAccess" class="container box">
-		<h1>Profile for {{ firstName }} {{ lastName }} ({{ username }})</h1>
+		<h1>
+			<i class="fa-solid fa-address-card"></i>
+			Profile for {{ firstName }} {{ lastName }} ({{ username }})
+		</h1>
 		<p> UID: {{ UID }}</p>
 		
 		<label for="name" class="form-label">Name</label>

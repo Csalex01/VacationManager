@@ -1,6 +1,9 @@
 <template>
 	<div class="container box">
-		<h1>Profile for {{ title }}</h1>
+		<h1>
+			<i class="fa-solid fa-address-card"></i>
+			Profile for {{ title }}
+		</h1>
 
 		<br>
 

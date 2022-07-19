@@ -1,6 +1,9 @@
 <template>
 	<div v-if="hasAccess">
-		<h1>Admin Panel</h1>
+		<h1>
+			<i class="fa-solid fa-hammer"></i>
+			Admin Panel
+		</h1>
 
 		<p>The following table shows all the registered users.</p>
 
@@ -40,7 +43,7 @@
 						</td>
 						<td>
 							<router-link :to="{ name: 'ProfileManager', params: { UID: user.UID } }">
-								<button class="btn btn-warning me-1"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</button>
+								<button class="btn btn-warning me-1"><i class="fa-solid fa-pen-to-square"></i> Edit User</button>
 							</router-link>
 						</td>
 					</tr>

@@ -15,34 +15,55 @@
 
 				<ul class="navbar-nav">
 					<li v-if="loggedIn" class="nav-item">
-						<router-link :to="{ name: 'Calendar' }" class="nav-link" :class="{active: $route.name === 'Calendar'}">Calendar</router-link>
+						<router-link :to="{ name: 'Calendar' }" class="nav-link" :class="{active: $route.name === 'Calendar'}">
+							<i class="fa-solid fa-calendar"></i>
+							Calendar
+						</router-link>
 					</li>
 
 					<li v-if="loggedIn && (role == 'Employee' || role == 'Admin')" class="nav-item">
-						<router-link :to="{ name: 'LeaveRequests' }" class="nav-link" :class="{active: $route.name === 'LeaveRequests'}">Leave Requests</router-link>
+						<router-link :to="{ name: 'LeaveRequests' }" class="nav-link" :class="{active: $route.name === 'LeaveRequests'}">
+							<i class="fa-solid fa-tower-observation"></i>
+							Leave Requests
+						</router-link>
 					</li>
 
 					<li v-if="isAdmin" class="nav-item">
-						<router-link :to="{ name: 'Admin' }" class="btn btn-outline-danger" :class="{active: $route.name === 'Admin'}">Admin Panel</router-link>
+						<router-link :to="{ name: 'Admin' }" class="btn btn-outline-danger" :class="{active: $route.name === 'Admin'}">
+							<i class="fa-solid fa-hammer"></i>
+							Admin Panel
+						</router-link>
 					</li>
 				</ul>
 
 				<ul class="navbar-nav ms-auto">
 
 					<li v-if="!loggedIn" class="nav-item">
-						<router-link :to="{ name: 'Signup' }" class="btn btn-outline-success" :class="{active: $route.name === 'Signup'}">Sign Up</router-link>
+						<router-link :to="{ name: 'Signup' }" class="btn btn-outline-success" :class="{active: $route.name === 'Signup'}">
+							<i class="fa-solid fa-user-plus"></i>
+							Sign Up
+						</router-link>
 					</li>
 
 					<li v-if="!loggedIn" class="nav-item">
-						<router-link :to="{ name: 'Login' }" class="nav-link" :class="{active: $route.name === 'Login'}">Log In</router-link>
+						<router-link :to="{ name: 'Login' }" class="nav-link" :class="{active: $route.name === 'Login'}">
+							<i class="fa-solid fa-right-to-bracket"></i>
+							Log In
+						</router-link>
 					</li>
 
 					<li v-if="loggedIn" class="nav-item">
-						<router-link :to="{name: 'Profile'}" class="nav-link" :class="{active: $route.name === 'Profile'}">Profile</router-link>
+						<router-link :to="{name: 'Profile'}" class="nav-link" :class="{active: $route.name === 'Profile'}">
+							<i class="fa-solid fa-address-card"></i>
+							Profile
+						</router-link>
 					</li>
 
 					<li v-if="loggedIn" class="nav-item">
-						<a class="btn btn-outline-warning" @click="logout">Log Out</a>
+						<a class="btn btn-outline-warning" @click="logout">
+							<i class="fa-solid fa-arrow-right-from-bracket"></i>
+							Log Out
+						</a>
 					</li>
 				</ul>
 

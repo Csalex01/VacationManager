@@ -4,24 +4,36 @@
 
 		<br>
 
-		<label for="email" class="form-label">Email Address</label>
+		<label for="email" class="form-label">
+			<span style="color: red">*</span>
+			Email Address
+		</label>
 		<input type="email" name="email" class="form-control" id="email" placeholder="Enter Email Address" v-model="email">
 
 		<br>
 
-		<label for="username" class="form-label">Username</label>
+		<label for="username" class="form-label">
+			<span style="color: red">*</span>
+			Username
+		</label>
 		<input type="text" name="username" class="form-control" id="username" placeholder="Enter Username" v-model="username">
 
 		<br>
 
 		<div class="row">
 			<div class="col">
-				<label for="firstName" class="form-label">First Name</label>
+				<label for="firstName" class="form-label">
+					<span style="color: red">*</span>
+					First Name
+				</label>
 				<input type="text" name="firstName" class="form-control" id="firstName" placeholder="Enter First Name" v-model="firstName">
 			</div>
 
 			<div class="col">
-				<label for="lastName" class="form-label">Last Name</label>
+				<label for="lastName" class="form-label">
+					<span style="color: red">*</span>
+					Last Name
+				</label>
 				<input type="text" name="lastName" class="form-control" id="lastName" placeholder="Enter Last Name" v-model="lastName">
 			</div>
 		</div>
@@ -30,19 +42,25 @@
 
 		<div class="row">
 			<div class="col">
-				<label for="paassword" class="form-label">Password</label>
+				<label for="paassword" class="form-label">
+					<span style="color: red">*</span>
+					Password
+				</label>
 				<input type="password" name="password1" class="form-control mb-1" id="password" placeholder="Enter Password" v-model="password1">
 			</div>
 
 			<div class="col">
-				<label for="paassword" class="form-label">Confirm Password</label>
+				<label for="paassword" class="form-label">
+					<span style="color: red">*</span>
+					Confirm Password
+				</label>
 				<input type="password" name="password2" class="form-control mb-1" id="password2" placeholder="Confirm Password" v-model="password2">
 			</div>
 		</div>
 
-		<br>
+		<p style="color: red; float: right" class="mt-4">* - Required fields</p>
 
-		<a href="#" class="btn btn-primary" @click="signup">Sign Up</a>
+		<a href="#" class="btn btn-primary mt-3" @click="signup">Sign Up</a>
 	</div>
 </template>
 
