@@ -29,16 +29,24 @@
 						<td>{{ user.FirstName }}</td>
 						<td>{{ user.LastName }}</td>
 						<td>
-							<i v-if="user.Role == 'Admin'" style="color: red">{{ user.Role }}</i>
-							<i v-else-if="user.Role == 'Employee'" style="color: green">{{ user.Role }}</i>
-							<i v-else-if="user.Role == 'Viewer'" style="color: blue">{{ user.Role }}</i>
+							<i v-if="user.Role == 'Admin'" class="text-danger">{{ user.Role }}</i>
+							<i v-else-if="user.Role == 'Employee'" class="text-success">{{ user.Role }}</i>
+							<i v-else-if="user.Role == 'Viewer'" class="text-primary">{{ user.Role }}</i>
 						</td>
 						<td>
-							<i v-if="user.Approved" class="fa-solid fa-circle-check" style="color: green"></i>
-							<i v-else class="fa-solid fa-circle-xmark" style="color: red"></i>
+							<span v-if="user.Approved" class="text-success">
+								<i class="fa-solid fa-circle-check me-2"></i>
+								Approved
+							</span>
+							<span v-else class="text-danger">
+								<i class="fa-solid fa-circle-xmark me-2"></i>
+								Refused
+							</span>
 						</td>
 						<td>
-							<button class="btn btn-success me-2"><i class="fa-solid fa-pen-to-square"></i> Edit Requests</button>
+							<router-link :to="{ name: 'RequestManager', params: {UID: user.UID}}">
+								<button class="btn btn-success me-2"><i class="fa-solid fa-pen-to-square"></i> Edit Requests</button>
+							</router-link>
 							({{ user.pendingRequests }}/{{ user.requestCount }})
 						</td>
 						<td>
@@ -104,7 +112,7 @@ export default {
 					this.registeredUsers.push(data)
 				})
 
-				console.log(this.registeredUsers)
+				// console.log(this.registeredUsers)
 			})
 			.catch(error => {
 				console.error(`Error: ${error.code}\n${error.message}`)

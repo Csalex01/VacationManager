@@ -26,9 +26,15 @@
 
 		<br>
 
-		<label for="approvedStatus" class="form-label me-3">Registration status (click to change)</label>
-		<input v-if="approved" name="approvedStatus" class="btn btn-success" @click="approved = !approved" value="Approved">
-		<input v-else name="approvedStatus" class="btn btn-danger" @click="approved = !approved" value="Refused">
+		<span class="form-label me-3">Registration status (click to change)</span>
+		<button v-if="approved" class="btn btn-success" @click="approved = !approved">
+			<i class="fa-solid fa-check me-2"></i>
+			Approved
+		</button>
+		<button v-else class="btn btn-danger" @click="approved = !approved">
+			<i class="fa-solid fa-xmark me-2"></i>
+			Refused
+		</button>
 
 		<br>
 
