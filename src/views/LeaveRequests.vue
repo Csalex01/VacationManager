@@ -179,6 +179,7 @@ export default {
 			})
 				.then(docRef => {
 					console.log(docRef.id)
+
 					this.$router.go()
 				})
 				.catch(error => {

@@ -45,13 +45,19 @@
 						</td>
 						<td>
 							<router-link :to="{ name: 'RequestManager', params: {UID: user.UID}}">
-								<button class="btn btn-success me-2"><i class="fa-solid fa-pen-to-square"></i> Edit Requests</button>
+								<button class="btn btn-success me-2">
+									<i class="fa-solid fa-pen-to-square"></i>
+									Edit Requests
+								</button>
 							</router-link>
 							({{ user.pendingRequests }}/{{ user.requestCount }})
 						</td>
 						<td>
 							<router-link :to="{ name: 'ProfileManager', params: { UID: user.UID } }">
-								<button class="btn btn-warning me-1"><i class="fa-solid fa-pen-to-square"></i> Edit User</button>
+								<button class="btn btn-warning me-1">
+									<i class="fa-solid fa-pen-to-square"></i> 
+									Edit User
+								</button>
 							</router-link>
 						</td>
 					</tr>
@@ -88,6 +94,35 @@ export default {
 							if (this.user.Role != 'Admin')
 								this.$router.push({ name: "Index" })
 
+							firestore.collection("users").get()
+								.then(querySnapshot => {
+									querySnapshot.forEach(docRef => {
+										const data = docRef.data()
+
+										data.requestCount = 0
+										data.pendingRequests = 0
+
+										firestore.collection("requests").get()
+											.then(querySnapshot => {
+												querySnapshot.forEach(docRef => {
+													const req = docRef.data()
+
+													if (req.UID == data.UID) {
+														data.requestCount++
+
+														if (req.Status == "Pending")
+															data.pendingRequests++
+													}
+												})
+
+												this.registeredUsers.push(data)
+											})
+									})
+								})
+								.catch(error => {
+									console.error(`Error: ${error.code}\n${error.message}`)
+								})
+
 						} else
 							console.log("No such document!")
 					})
@@ -97,26 +132,6 @@ export default {
 			}
 		})
 
-		firestore.collection("users").get()
-			.then(querySnapshot => {
-				querySnapshot.forEach(docRef => {
-					const data = docRef.data()
-
-					if (data.Requests != null)
-						data.requestCount = data.Requests.length
-					else
-						data.requestCount = 0
-
-					data.pendingRequests = 0
-
-					this.registeredUsers.push(data)
-				})
-
-				// console.log(this.registeredUsers)
-			})
-			.catch(error => {
-				console.error(`Error: ${error.code}\n${error.message}`)
-			})
 	}
 }
 </script>
