@@ -8,16 +8,16 @@
 		<div class="table-responsive">
 			<table class="table table-striped mt-3">
 				<thead style="background: #212529; color: white">
-					<tr>
+					<tr class="text-center">
 						<th scope="col">#</th>
 						<th scope="col">Start Date</th>
 						<th scope="col">End Date</th>
 						<th scope="col">Reason</th>
-						<th scope="col">Actions</th>
+						<th scope="col" class="col-2">Actions</th>
 					</tr>
 				</thead>
 
-				<tbody>
+				<tbody class="text-center">
 					<tr v-for="(request, index) in requests" :key="request.id">
 						<th scope="row">{{ index + 1}}</th>
 						<td>{{ request.start }}</td>

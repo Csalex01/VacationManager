@@ -57,7 +57,7 @@
 
 		<div class="table-responsive">
 			<table class="table table-striped mt-3">
-				<thead style="background: #212529; color: white">
+				<thead class="text-center" style="background: #212529; color: white">
 					<tr>
 						<th scope="col">#</th>
 						<th scope="col">Start Date</th>
@@ -68,7 +68,7 @@
 				</thead>
 
 				<tbody>
-					<tr v-for="(request, index) in requests" :key="request.id">
+					<tr class="text-center" v-for="(request, index) in requests" :key="request.id">
 						<th scope="row">{{ index + 1 }}</th>
 						<td>{{ request.start }}</td>
 						<td>{{ request.end }}</td>

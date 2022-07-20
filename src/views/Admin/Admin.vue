@@ -10,7 +10,7 @@
 		<div class="table-responsive">
 			<table class="table table-striped mt-3">
 				<thead style="background: #212529; color: white;">
-					<tr>
+					<tr class="text-center">
 						<th scope="col">#</th>
 						<th scope="col">Username</th>
 						<th scope="col">First Name</th>
@@ -23,7 +23,7 @@
 				</thead>
 
 				<tbody>
-					<tr v-for="(user, index) in registeredUsers" :key="user.UID">
+					<tr class="text-center" v-for="(user, index) in registeredUsers" :key="user.UID">
 						<th scope="row">{{ index + 1}}</th>
 						<td><span style="color: gray" class="me-1">@</span>{{ user.Username }}</td>
 						<td>{{ user.FirstName }}</td>
