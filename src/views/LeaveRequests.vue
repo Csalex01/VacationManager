@@ -47,7 +47,7 @@
 
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="dismiss">Dismiss</button>
-						<button type="button" class="btn btn-primary" @click="submitRequest">Submit New Leave Request</button>
+						<button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="submitRequest">Submit New Leave Request</button>
 					</div>
 				</div>
 			</div>
@@ -57,9 +57,9 @@
 
 		<div class="table-responsive">
 			<table class="table table-striped mt-3">
-				<thead class="text-center" style="background: #212529; color: white">
+				<thead style="background: #212529; color: white">
 					<tr>
-						<th scope="col">#</th>
+						<th scope="col" style="width: 50px">#</th>
 						<th scope="col">Start Date</th>
 						<th scope="col">End Date</th>
 						<th scope="col">Reason</th>
@@ -68,7 +68,7 @@
 				</thead>
 
 				<tbody>
-					<tr class="text-center" v-for="(request, index) in requests" :key="request.id">
+					<tr v-for="(request, index) in requests" :key="request.id">
 						<th scope="row">{{ index + 1 }}</th>
 						<td>{{ request.start }}</td>
 						<td>{{ request.end }}</td>
@@ -78,13 +78,13 @@
 								<i class="fa-solid fa-clock me-2"></i>
 								Pending
 							</span>
-							<span v-else-if="request.status == 'Approved'" class="text-success">
+							<span v-else-if="request.status == 'Accepted'" class="text-success">
 								<i class="fa-solid fa-circle-check me-2"></i>
-								Approved
+								Accepted
 							</span>
-							<span v-else-if="request.status == 'Refused'" class="text-danger">
+							<span v-else-if="request.status == 'Declined'" class="text-danger">
 								<i class="fa-solid fa-circle-xmark me-2"></i>
-								Refused
+								Declined
 							</span>
 						</td>
 					</tr>
@@ -142,12 +142,14 @@ export default {
 													start: data.Start,
 													end: data.End,
 													reason: data.Reason,
-													status: data.Status
+													status: data.Status,
+													timestamp: data.Timestamp
 												})
 										}
 									})
 
-									// console.log(this.requests)
+									this.requests.sort((a, b) => a.timestamp - b.timestamp)
+									console.log(this.requests)
 								})
 						}
 					})
@@ -170,17 +172,30 @@ export default {
 			console.log(this.endDate)
 			console.log(this.reason)
 
-			firestore.collection("requests").add({
+			const request = {
 				UID: this.user.UID,
 				Start: this.startDate,
 				End: this.endDate,
 				Reason: this.reason.length == 0 ? "No reason given" : this.reason,
-				Status: "Pending"
-			})
+				Status: "Pending",
+				Timestamp: Date.now()
+			}
+
+			firestore.collection("requests").add(request)
 				.then(docRef => {
 					console.log(docRef.id)
+					this.requests.push({
+						id: docRef.id,
+						start: request.Start,
+						end: request.End,
+						reason: request.Reason,
+						status: request.Status,
+						timestamp: request.Timestamp
+					})
 
-					this.$router.go()
+					this.startDate = ""
+					this.endDate = ""
+					this.reason = ""
 				})
 				.catch(error => {
 					console.error(`Error: ${error.code}\n${error.message}`)

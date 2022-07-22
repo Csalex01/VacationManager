@@ -10,20 +10,20 @@
 		<div class="table-responsive">
 			<table class="table table-striped mt-3">
 				<thead style="background: #212529; color: white;">
-					<tr class="text-center">
+					<tr>
 						<th scope="col">#</th>
 						<th scope="col">Username</th>
 						<th scope="col">First Name</th>
 						<th scope="col">Last Name</th>
 						<th scope="col">User Group</th>
-						<th scope="col">Approved</th>
+						<th scope="col">Status</th>
 						<th scope="col">Requests (Pending/Total)</th>
 						<th scope="col">Actions</th>
 					</tr>
 				</thead>
 
 				<tbody>
-					<tr class="text-center" v-for="(user, index) in registeredUsers" :key="user.UID">
+					<tr v-for="(user, index) in registeredUsers" :key="user.UID">
 						<th scope="row">{{ index + 1}}</th>
 						<td><span style="color: gray" class="me-1">@</span>{{ user.Username }}</td>
 						<td>{{ user.FirstName }}</td>
@@ -76,7 +76,7 @@ export default {
 		return {
 			user: null,
 			hasAccess: false,
-			registeredUsers: [],
+			registeredUsers: null,
 			UID: null,
 			enableModal: false
 		}
@@ -96,6 +96,7 @@ export default {
 
 							firestore.collection("users").get()
 								.then(querySnapshot => {
+									this.registeredUsers = []
 									querySnapshot.forEach(docRef => {
 										const data = docRef.data()
 
@@ -114,8 +115,8 @@ export default {
 															data.pendingRequests++
 													}
 												})
-
 												this.registeredUsers.push(data)
+												this.registeredUsers.sort((a, b) => a.RegisteredOn - b.RegisteredOn)
 											})
 									})
 								})

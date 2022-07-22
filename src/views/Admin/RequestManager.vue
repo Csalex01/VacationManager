@@ -2,31 +2,50 @@
 	<div v-if="loggedIn && approved">
 		<h1>
 			<i class="fa-solid fa-pen-to-square"></i> 
-			Request Manager View
+			Request Manager
 		</h1>
 		
 		<div class="table-responsive">
 			<table class="table table-striped mt-3">
 				<thead style="background: #212529; color: white">
-					<tr class="text-center">
-						<th scope="col">#</th>
+					<tr>
+						<th scope="col" style="width: 50px">#</th>
 						<th scope="col">Start Date</th>
 						<th scope="col">End Date</th>
 						<th scope="col">Reason</th>
-						<th scope="col" class="col-2">Actions</th>
+						<th scope="col">Status</th>
+						<th scope="col" class="col-3">Actions</th>
 					</tr>
 				</thead>
 
-				<tbody class="text-center">
+				<tbody>
 					<tr v-for="(request, index) in requests" :key="request.id">
 						<th scope="row">{{ index + 1}}</th>
 						<td>{{ request.start }}</td>
 						<td>{{ request.end }}</td>
 						<td>{{ request.reason }}</td>
 						<td>
-							<button class="btn btn-warning me-1">
+							<span v-if="request.status == 'Pending'" class="text-warning">
+								<i class="fa-solid fa-clock me-2"></i>
+								Pending
+							</span>
+							<span v-else-if="request.status == 'Accepted'" class="text-success">
+								<i class="fa-solid fa-circle-check me-2"></i>
+								Accepted
+							</span>
+							<span v-else-if="request.status == 'Declined'" class="text-danger">
+								<i class="fa-solid fa-circle-xmark me-2"></i>
+								Declined
+							</span>
+						</td>
+						<td>
+							<button class="btn btn-warning me-1" @click="test(request.id)">
 								<i class="fa-solid fa-pen-to-square"></i> 
 								Edit Request
+							</button>
+							<button class="btn btn-danger">
+								<i class="fa-solid fa-trash"></i> 
+								Delete Request
 							</button>
 						</td>
 					</tr>
@@ -48,7 +67,8 @@ export default {
 			user: null,
 			loggedIn: false,
 			approved: false,
-			requests: []
+			requests: [],
+			title: null
 		}
 	},
 	beforeCreate() {
@@ -91,11 +111,12 @@ export default {
 													end: data.End,
 													reason: data.Reason,
 													status: data.Status,
+													timestamp: data.Timestamp
 												})
 											}
 										}
 									})
-
+									this.requests.sort((a, b) => a.timestamp - b.timestamp)
 									// console.log(this.requests)
 								})
 						}
@@ -105,6 +126,11 @@ export default {
 				this.$router.push({ name: "Index" })
 			}
 		})
+	},
+	methods: {
+		test(id) {
+			console.log(id)
+		}
 	}
 }
 </script>

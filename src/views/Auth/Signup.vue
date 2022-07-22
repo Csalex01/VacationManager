@@ -148,7 +148,8 @@ export default {
 						FirstName: this.firstName,
 						LastName: this.lastName,
 						Role: "Viewer",
-						Approved: false
+						Approved: false,
+						RegisteredOn: Date.now()
 					})
 						.then(docRef => {
 							console.log(`User successfully added to database with ID: ${userCredintial.user.uid}`)
