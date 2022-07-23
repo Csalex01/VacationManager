@@ -46,7 +46,7 @@
 					</div>
 
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="dismiss">Dismiss</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Dismiss</button>
 						<button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="submitRequest">Submit New Leave Request</button>
 					</div>
 				</div>
@@ -163,10 +163,6 @@ export default {
 
 	},
 	methods: {
-		dismiss() {
-
-		},
-
 		submitRequest() {
 			console.log(this.startDate)
 			console.log(this.endDate)

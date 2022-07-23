@@ -5,6 +5,55 @@
 			Request Manager
 		</h1>
 		
+		<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="requestModal" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<h5>
+							<i class="fa-solid fa-pen-to-square"></i> 
+							Edit Request (ID: {{ modalRequest.id }})
+						</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+
+					<div class="modal-body">
+						<p>You can edit the selected leave request below.</p>
+
+						<div class="mb-3">
+							<label for="startDdate" class="form-label">Start Date</label>
+							<input type="date" name="startDate" id="startDate" class="form-control" v-model="modalRequest.start">
+						</div>
+
+						<div class="mb-3">
+							<label for="endDate" class="form-label">End Date</label>
+							<input type="date" name="endDate" id="endDate" class="form-control" v-model="modalRequest.end">
+						</div>
+
+						<div class="mb-3">
+							<label for="reason" class="form-label">Reason</label>
+							<textarea name="reason" id="reason" cols="30" rows="10" class="form-control" v-model="modalRequest.reason"></textarea>
+						</div>
+
+						<div>
+							<label for="status" class="form-label">Status</label>
+							<select name="status" id="role-dropdown" class="form-select" v-model="modalRequest.status">
+								<option selected disabled hidden>{{ modalRequest.status }}</option>
+								<option value="Accepted">Accepted</option>
+								<option value="Pending">Pending</option>
+								<option value="Declined">Declined</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<button class="btn btn-secondary" data-bs-dismiss="modal">Dismiss</button>
+						<button class="btn btn-primary" data-bs-dismiss="modal" @click="submit">Confirm Edit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<div class="table-responsive">
 			<table class="table table-striped mt-3">
 				<thead style="background: #212529; color: white">
@@ -39,7 +88,7 @@
 							</span>
 						</td>
 						<td>
-							<button class="btn btn-warning me-1" @click="test(request.id)">
+							<button class="btn btn-success me-1" data-bs-toggle="modal" data-bs-target="#editModal" @click="edit(request.id)">
 								<i class="fa-solid fa-pen-to-square"></i> 
 								Edit Request
 							</button>
@@ -68,13 +117,11 @@ export default {
 			loggedIn: false,
 			approved: false,
 			requests: [],
-			title: null
+			title: null,
+			modalRequest: {}
 		}
 	},
 	beforeCreate() {
-		// this.UID = this.$route.params.UID
-		// console.log(this.UID)
-
 		auth.onAuthStateChanged(user => {
 			if (user) {
 				this.loggedIn = true
@@ -117,7 +164,6 @@ export default {
 										}
 									})
 									this.requests.sort((a, b) => a.timestamp - b.timestamp)
-									// console.log(this.requests)
 								})
 						}
 					})
@@ -128,8 +174,17 @@ export default {
 		})
 	},
 	methods: {
-		test(id) {
-			console.log(id)
+		edit(id) {
+			this.modalRequest = (this.requests.filter(req => req.id == id))[0]
+		},
+		submit() {
+			const doc = firestore.collection("requests").doc(this.modalRequest.id)
+			doc.update({
+				Start: this.modalRequest.start,
+				End: this.modalRequest.end,
+				Reason: this.modalRequest.reason,
+				Status: this.modalRequest.status
+			})
 		}
 	}
 }
