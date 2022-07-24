@@ -13,12 +13,13 @@
 					<tr>
 						<th scope="col">#</th>
 						<th scope="col">Username</th>
+						<th scope="col">E-mail</th>
 						<th scope="col">First Name</th>
 						<th scope="col">Last Name</th>
-						<th scope="col">User Group</th>
-						<th scope="col">Status</th>
-						<th scope="col">Requests (Pending/Total)</th>
-						<th scope="col">Actions</th>
+						<th scope="col" class="col-1">User Group</th>
+						<th scope="col" class="col-1">Status</th>
+						<th scope="col" class="col-2">Requests (A/P/D/T)</th>
+						<th scope="col" class="col-2">Actions</th>
 					</tr>
 				</thead>
 
@@ -26,6 +27,7 @@
 					<tr v-for="(user, index) in registeredUsers" :key="user.UID">
 						<th scope="row">{{ index + 1}}</th>
 						<td><span style="color: gray" class="me-1">@</span>{{ user.Username }}</td>
+						<td>{{ user.Email }}</td>
 						<td>{{ user.FirstName }}</td>
 						<td>{{ user.LastName }}</td>
 						<td>
@@ -50,7 +52,7 @@
 									Edit Requests
 								</button>
 							</router-link>
-							({{ user.pendingRequests }}/{{ user.requestCount }})
+							({{ user.acceptedRequests }}/{{ user.pendingRequests }}/{{ user.declinedRequests }}/{{ user.requestCount }})
 						</td>
 						<td>
 							<router-link :to="{ name: 'ProfileManager', params: { UID: user.UID } }">
@@ -102,6 +104,8 @@ export default {
 
 										data.requestCount = 0
 										data.pendingRequests = 0
+										data.acceptedRequests = 0
+										data.declinedRequests = 0
 
 										firestore.collection("requests").get()
 											.then(querySnapshot => {
@@ -113,6 +117,12 @@ export default {
 
 														if (req.Status == "Pending")
 															data.pendingRequests++
+
+														if (req.Status == "Accepted")
+															data.acceptedRequests++
+
+														if (req.Status == "Declined")
+															data.declinedRequests++
 													}
 												})
 												this.registeredUsers.push(data)

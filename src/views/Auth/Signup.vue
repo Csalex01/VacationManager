@@ -144,6 +144,7 @@ export default {
 
 					firestore.collection("users").doc(userCredintial.user.uid).set({
 						UID: userCredintial.user.uid,
+						Email: this.email,
 						Username: this.username,
 						FirstName: this.firstName,
 						LastName: this.lastName,

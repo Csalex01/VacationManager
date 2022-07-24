@@ -58,12 +58,12 @@
 			<table class="table table-striped mt-3">
 				<thead style="background: #212529; color: white">
 					<tr>
-						<th scope="col" style="width: 50px">#</th>
-						<th scope="col">Start Date</th>
-						<th scope="col">End Date</th>
-						<th scope="col">Reason</th>
-						<th scope="col">Status</th>
-						<th scope="col" class="col-3">Actions</th>
+						<th scope="col">#</th>
+						<th scope="col" class="col-1">Start Date</th>
+						<th scope="col" class="col-1">End Date</th>
+						<th scope="col" class="col-7">Reason</th>
+						<th scope="col" class="col-1">Status</th>
+						<th scope="col" class="col-2">Actions</th>
 					</tr>
 				</thead>
 
@@ -91,10 +91,6 @@
 							<button class="btn btn-success me-1" data-bs-toggle="modal" data-bs-target="#editModal" @click="edit(request.id)">
 								<i class="fa-solid fa-pen-to-square"></i> 
 								Edit Request
-							</button>
-							<button class="btn btn-danger">
-								<i class="fa-solid fa-trash"></i> 
-								Delete Request
 							</button>
 						</td>
 					</tr>

@@ -14,7 +14,10 @@
 				<div class="modal-content">
 
 					<div class="modal-header">
-						<h5 class="modal-title">New Leave Request</h5>
+						<h5 class="modal-title">
+							<i class="fa-solid fa-tower-observation"></i>
+							New Leave Request
+						</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 
@@ -60,10 +63,10 @@
 				<thead style="background: #212529; color: white">
 					<tr>
 						<th scope="col" style="width: 50px">#</th>
-						<th scope="col">Start Date</th>
-						<th scope="col">End Date</th>
-						<th scope="col">Reason</th>
-						<th scope="col">Status</th>
+						<th scope="col" class="col-1">Start Date</th>
+						<th scope="col" class="col-1">End Date</th>
+						<th scope="col" class="col-8">Reason</th>
+						<th scope="col" class="col-2">Status</th>
 					</tr>
 				</thead>
 
@@ -145,11 +148,12 @@ export default {
 													status: data.Status,
 													timestamp: data.Timestamp
 												})
+
 										}
 									})
 
 									this.requests.sort((a, b) => a.timestamp - b.timestamp)
-									console.log(this.requests)
+									// console.log(this.requests)
 								})
 						}
 					})

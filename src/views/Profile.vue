@@ -97,17 +97,15 @@ export default {
 	},
 	methods: {
 		saveChanges() {
-			console.log(this.email)
-			console.log(this.username)
-			console.log(this.firstName)
-			console.log(this.lastName)
-			console.log(this.password1)
-			console.log(this.password2)
-
 			const currentUser = auth.currentUser
+			const doc = firestore.collection("users").doc(this.user.UID)
+
 			currentUser.updateEmail(this.email)
 				.then(() => {
-					console.log("Successfully updated email address!")
+					doc.update({
+						Email: this.email
+					})
+						.then(() => console.log("Successfully updated email address!"))
 				})
 				.catch(error => {
 					console.error(`Error: ${error.code}\n${error.message}`)
@@ -122,11 +120,10 @@ export default {
 						console.error(`Error: ${error.code}\n${error.message}`)
 					})
 
-			const doc = firestore.collection("users").doc(this.user.UID)
 			doc.update({
 				Username: this.username,
 				FirstName: this.firstName,
-				LastName: this.lastName,
+				LastName: this.lastName
 			})
 				.then(() => {
 					console.log("Document updated successfully!")
