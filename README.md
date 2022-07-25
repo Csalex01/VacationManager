@@ -1,6 +1,6 @@
 # Vacation Manager
 
-This is a web application in which you can manage user's leave requests.
+This is a web application built on top of Vue.js, in which you can manage user's leave requests.
 
 ## Tools used
 
