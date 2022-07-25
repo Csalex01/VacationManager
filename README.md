@@ -2,6 +2,10 @@
 
 This is a web application built on top of Vue.js, in which you can manage user's leave requests.
 
+## Project description
+
+
+
 ## Tools used
 
 Tools used in this project:
