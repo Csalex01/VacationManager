@@ -1,6 +1,6 @@
-# Vacation Manager
+# 🌴 Vacation Manager
 
-## Project description
+## 🗒️ Project description
 
 This is a web application solely for the purpose of managing user's or employee's leave time. You can edit, accept or deny their leave requests. All the leave requests are shown in the calendar view regardless of it's status (Accepted, Pending on Declined).
 
@@ -15,12 +15,12 @@ The Administrator panel/view can only be accessed by an administrator user. Here
 
 This project is hosted via Firebase's hosting service, and it is available [here](https://vacationmanager.csalex.org) (https://vacationmanager.csalex.org).
 
-## Project installation
+## 💻️ Project installation
 
-### Recommended IDE Setup
+### 🛠️ Recommended IDE Setup
 [Visual Studio Code](https://code.visualstudio.com/) + [Volar Extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
-### Installation
+### ⌨️ Installation
 
 In order to fully utilize the project, you need to install [Node.js](https://nodejs.org/en/).
 
@@ -40,7 +40,7 @@ npm run build
 ```
 If you run the code above, it will create all the required files in the dist/ directory. Firebase Hosting needs to be configured accordingly.
 
-## Tools used
+## 🎛️ Tools used
 
 Tools used in this project:
 - Node.js
@@ -104,7 +104,7 @@ GitHub Desktop makes it easier to manage changes and repositories in a visual in
 
 Visual Studio Code, also commonly referred to as VS Code, is a source-code editor made by Microsoft for Windows, Linux and macOS. Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git.
 
-## Further possible improvements
+## 🔼 Further possible improvements
 
 This project in it's current state is a prototype, with possible errors, bugs and room for code refactoring.
 
