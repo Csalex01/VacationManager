@@ -75,6 +75,10 @@ GitHub, Inc. is a provider of Internet hosting for software development and vers
 
 GitHub Desktop makes it easier to manage changes and repositories in a visual interface, rather than in the command line.
 
+## Visual Studio Code ([link](https://code.visualstudio.com/))
+
+Visual Studio Code, also commonly referred to as VS Code, is a source-code editor made by Microsoft for Windows, Linux and macOS. Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git.
+
 ## Further possible improvements
 
 This project in it's current state is a prototype, with possible errors, bugs and room for code refactoring.
@@ -83,4 +87,4 @@ Features currently not implemented:
 - Docker container
 
 Possible improvements:
-- How a component loads the current user (logged in or not): At the moment, each time a new view is loaded, it makes an API call to the authentication service, and with the given ID, it queries the Firestore database for the user's information. This makes some components slow to load or less responsive. This could be avoided by storing the user's data in the firebase/config.js file and exporting it as a module, this way it is only loaded once and it can be used where it is needed without an unneccesary authenticattion API request and database query.
+- How a component loads the current user: At the moment, each time a new view is loaded, it makes an API call to the authentication service, and with the given ID, it queries the Firestore database for the user's information. This makes some components slow to load or less responsive. This could be avoided by storing the user's data in the firebase/config.js file and exporting it as a module, this way it is only loaded once and it can be used where it is needed without an unneccesary authenticattion API request and database query.
