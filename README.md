@@ -38,7 +38,7 @@ Once you finished with debugging, you can run the following command to build to 
 ```
 npm run build
 ```
-Once you run the code above, it will create all the required files in the dist/ directory. Firebase Hosting needs to be configured accordingly.
+If you run the code above, it will create all the required files in the dist/ directory. Firebase Hosting needs to be configured accordingly.
 
 ## Tools used
 
