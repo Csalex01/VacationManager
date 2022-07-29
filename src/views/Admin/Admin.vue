@@ -18,7 +18,7 @@
 						<th scope="col">Last Name</th>
 						<th scope="col" class="col-1">User Group</th>
 						<th scope="col" class="col-1">Status</th>
-						<th scope="col" class="col-1">E-mail Not.</th>
+						<th scope="col" class="col-1">E-mail Notif.</th>
 						<th scope="col" class="col-2">Requests (A/P/D/T)</th>
 						<th scope="col" class="col-2">Actions</th>
 					</tr>
