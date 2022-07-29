@@ -15,6 +15,31 @@ The Administrator panel/view can only be accessed by an administrator user. Here
 
 This project is hosted via Firebase's hosting service, and it is available [here](https://vacationmanager.csalex.org) (https://vacationmanager.csalex.org).
 
+## Project installation
+
+### Recommended IDE Setup
+[Visual Studio Code](https://code.visualstudio.com/) + [Volar Extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+
+### Installation
+
+In order to fully utilize the project, you need to install [Node.js](https://nodejs.org/en/).
+
+Once you have that, you can run the command following command to install all the required packages (package.json):
+```
+npm install
+```
+
+If you want to have hot-reloading and compile the project, run:
+```
+npm run dev
+```
+
+Once you finished with debugging, you can run the following command to build to production (compillation and minifying code), so it can be shipped through a hosting service (Firebase Hosting in this case):
+```
+npm run build
+```
+Once you run the code above, it will create all the required files in the dist/ directory. Firebase Hosting needs to be configured accordingly.
+
 ## Tools used
 
 Tools used in this project:

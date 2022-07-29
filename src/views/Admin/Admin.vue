@@ -125,6 +125,7 @@ export default {
 															data.declinedRequests++
 													}
 												})
+
 												this.registeredUsers.push(data)
 												this.registeredUsers.sort((a, b) => a.RegisteredOn - b.RegisteredOn)
 											})
