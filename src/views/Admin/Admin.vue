@@ -18,6 +18,7 @@
 						<th scope="col">Last Name</th>
 						<th scope="col" class="col-1">User Group</th>
 						<th scope="col" class="col-1">Status</th>
+						<th scope="col" class="col-1">E-mail Not.</th>
 						<th scope="col" class="col-2">Requests (A/P/D/T)</th>
 						<th scope="col" class="col-2">Actions</th>
 					</tr>
@@ -43,6 +44,16 @@
 							<span v-else class="text-danger">
 								<i class="fa-solid fa-circle-xmark me-2"></i>
 								Refused
+							</span>
+						</td>
+						<td>
+							<span v-if="user.OptionalEmail" class="text-success">
+								<i class="fa-solid fa-circle-check me-2"></i>
+								On
+							</span>
+							<span v-else class="text-danger">
+								<i class="fa-solid fa-circle-xmark me-2"></i>
+								Off
 							</span>
 						</td>
 						<td>
