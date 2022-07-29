@@ -13,7 +13,7 @@ All users are capable of modifying their own data, such as e-mail address, first
 
 The Administrator panel/view can only be accessed by an administrator user. Here, it is possible to edit a specific user's leave requests or the user's profile (registration status and user role).
 
-This project is hosted via Firebase's hosting service, and it is available [here](https://vacationmanager.csalex.org).
+This project is hosted via Firebase's hosting service, and it is available [here](https://vacationmanager.csalex.org) (https://vacationmanager.csalex.org).
 
 ## Tools used
 
