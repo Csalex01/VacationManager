@@ -46,9 +46,7 @@
 		<br>
 
 		<div class="checkbox">
-			<!-- <input type="checkbox" name="optionalEmail" id="optionalEmail" class="me-3">
-			<label for="optionalEmail" id="optionalEmailLabel" class="form-label mb-2">Receive E-mail notifications for changes. (Optional)</label> -->
-			 <label class="form-label">
+			<label class="form-label">
 				<input type="checkbox" id="optionalEmail" class="me-3" v-model="optionalEmail">
 				<span id="optionalEmailLabel">Receive E-mail notifications for changes. (Optional)</span>
 			</label>
