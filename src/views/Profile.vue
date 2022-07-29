@@ -45,6 +45,16 @@
 
 		<br>
 
+		<div class="checkbox">
+			<!-- <input type="checkbox" name="optionalEmail" id="optionalEmail" class="me-3">
+			<label for="optionalEmail" id="optionalEmailLabel" class="form-label mb-2">Receive E-mail notifications for changes. (Optional)</label> -->
+			 <label class="form-label">
+				<input type="checkbox" id="optionalEmail" class="me-3" v-model="optionalEmail">
+				<span id="optionalEmailLabel">Receive E-mail notifications for changes. (Optional)</span>
+			</label>
+		</div>
+		<br>
+
 		<a href="#" class="btn btn-primary" @click="saveChanges">Save changes</a>
 
 	</div>
@@ -65,7 +75,8 @@ export default {
 			lastName: null,
 			password1: null,
 			password2: null,
-			title: null
+			title: null,
+			optionalEmail: null
 		}
 	},
 	beforeCreate() {
@@ -84,6 +95,7 @@ export default {
 							this.username = this.user.Username
 							this.firstName = this.user.FirstName
 							this.lastName = this.user.LastName
+							this.optionalEmail = this.user.OptionalEmail
 
 							this.title = `${this.firstName} ${this.lastName} (${this.username})`
 						}
@@ -123,7 +135,8 @@ export default {
 			doc.update({
 				Username: this.username,
 				FirstName: this.firstName,
-				LastName: this.lastName
+				LastName: this.lastName,
+				OptionalEmail: this.optionalEmail
 			})
 				.then(() => {
 					console.log("Document updated successfully!")
@@ -140,5 +153,16 @@ export default {
 <style scoped>
 .box {
 	max-width: 1000px;
+}
+
+#optionalEmail {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+}
+
+#optionalEmailLabel {
+	display: inline-block;
+	transform: translateY(-50%);
 }
 </style>
