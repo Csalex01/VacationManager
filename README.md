@@ -12,6 +12,7 @@ Tools used in this project:
 - Node.js
 - NPM (Node Package Manager)
 - Vue.js
+- Bootstrap 5.2.0
 - Firebase
 	- Authentication service
 	- Cloud Firestore Database
@@ -29,6 +30,10 @@ NPM is used for package management for Node.js.
 ## Vue.js ([link](https://vuejs.org))
 
 Vue.js is an open-source model-view-viewmodel front-end framework built on top of JavaScript. This is used for building user interfaces and single-page web applications.
+
+## Bootstrap 5.2.0 ([link](https://getbootstrap.com/))
+
+Bootstrap is a free and open-source CSS framework directed at responsive front-end web development. It contains HTML, CSS and JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.
 
 ## Firebaase ([link](https://firebase.google.com/))
 

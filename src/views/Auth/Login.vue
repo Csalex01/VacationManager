@@ -55,6 +55,12 @@ export default {
 				return
 			}
 
+			if (this.password.length < 6) {
+				this.alertMessage = "Password must be minimum 6 characters long!"
+				this.alertType = "Warning"
+				return
+			}
+
 			auth.signInWithEmailAndPassword(this.email, this.password)
 				.then(userCredintial => {
 					// console.log(`Logged in: ${userCredintial.user.uid}`)
@@ -72,6 +78,10 @@ export default {
 							break
 						case "auth/invalid-email":
 							this.alertMessage = "Please enter a valid email address!"
+							this.alertType = "Error"
+							break
+						case "auth/wrong-password":
+							this.alertMessage = "Wrong password!"
 							this.alertType = "Error"
 							break
 						default:
