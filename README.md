@@ -1,5 +1,7 @@
 # 🌴 Vacation Manager
 
+![Vacation Manager](vacation_manager.png)
+
 ## 🗒️ Project description
 
 This is a web application solely for the purpose of managing user's or employee's leave time. You can edit, accept or deny their leave requests. All the leave requests are shown in the calendar view regardless of it's status (Accepted, Pending on Declined).
