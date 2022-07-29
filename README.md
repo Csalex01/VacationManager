@@ -1,10 +1,19 @@
 # Vacation Manager
 
-This is a web application built on top of Vue.js, in which you can manage user's leave requests.
-
 ## Project description
 
+This is a web application solely for the purpose of managing user's or employee's leave time. You can edit, accept or deny their leave requests. All the leave requests are shown in the calendar view regardless of it's status (Accepted, Pending on Declined).
 
+There are 3 user groups, with different roles and permissions:
+- Viewer: Can only view their own calendar, but cannot create leave requests, modify their registration status or leave requests.
+- Employee: Can view their own calendar, leave requests and can submit new requests, but cannot modify their registration status or a specific leave request.
+- Administrator: Can view their own calendar, leave requests and has access to the admin panel. Can modify the time interval, the reason and the status of the user's requested leave. They are capable of modifying a user's registration status (accepted, declined) or user role.
+
+All users are capable of modifying their own data, such as e-mail address, first- and last name, username and password. This can be done in the Profile view.
+
+The Administrator panel/view can only be accessed by an administrator user. Here, it is possible to edit a specific user's leave requests or the user's profile (registration status and user role).
+
+This project is hosted via Firebase's hosting service, and it is available [here](https://vacationmanager.csalex.org).
 
 ## Tools used
 
@@ -18,6 +27,7 @@ Tools used in this project:
 	- Cloud Firestore Database
 	- Hosting service
 - Git & GitHub & GitHub Desktop
+- Visual Studio Code
 
 ## Node.js ([link](https://nodejs.org/en/))
 
@@ -64,3 +74,13 @@ GitHub, Inc. is a provider of Internet hosting for software development and vers
 ### GitHub Desktop ([link](https://desktop.github.com/))
 
 GitHub Desktop makes it easier to manage changes and repositories in a visual interface, rather than in the command line.
+
+## Further possible improvements
+
+This project in it's current state is a prototype, with possible errors, bugs and room for code refactoring.
+
+Features currently not implemented:
+- Docker container
+
+Possible improvements:
+- How a component loads the current user (logged in or not): At the moment, each time a new view is loaded, it makes an API call to the authentication service, and with the given ID, it queries the Firestore database for the user's information. This makes some components slow to load or less responsive. This could be avoided by storing the user's data in the firebase/config.js file and exporting it as a module, this way it is only loaded once and it can be used where it is needed without an unneccesary authenticattion API request and database query.
