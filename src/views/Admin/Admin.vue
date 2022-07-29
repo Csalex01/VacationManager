@@ -12,7 +12,7 @@
 				<thead style="background: #212529; color: white;">
 					<tr>
 						<th scope="col">#</th>
-						<th scope="col">Username</th>
+						<th scope="col"><span style="color: gray" class="me-1">@</span> Username</th>
 						<th scope="col">E-mail</th>
 						<th scope="col">First Name</th>
 						<th scope="col">Last Name</th>
