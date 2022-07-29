@@ -54,23 +54,23 @@ Tools used in this project:
 - Git & GitHub & GitHub Desktop
 - Visual Studio Code
 
-## Node.js ([link](https://nodejs.org/en/))
+### Node.js ([link](https://nodejs.org/en/))
 
 Node.js is an open-source back-end JavaScript runtime environment, built on top of Google Chrome's V8 JavaScript engine. Node.js is capable of running JavaScript code outside of a browser, directly on the host machine. This makes developing network applications much easier and opens the possibility to develop desktop applications as well.
 
-## NPM (Node Package Manager) ([link](https://www.npmjs.com/))
+### NPM (Node Package Manager) ([link](https://www.npmjs.com/))
 
 NPM is used for package management for Node.js.
 
-## Vue.js ([link](https://vuejs.org))
+### Vue.js ([link](https://vuejs.org))
 
 Vue.js is an open-source model-view-viewmodel front-end framework built on top of JavaScript. This is used for building user interfaces and single-page web applications.
 
-## Bootstrap 5.2.0 ([link](https://getbootstrap.com/))
+### Bootstrap 5.2.0 ([link](https://getbootstrap.com/))
 
 Bootstrap is a free and open-source CSS framework directed at responsive front-end web development. It contains HTML, CSS and JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.
 
-## Firebaase ([link](https://firebase.google.com/))
+### Firebaase ([link](https://firebase.google.com/))
 
 Firebase is a platform developed by Google for creating mobile and web applications
 
